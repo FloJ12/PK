@@ -3,19 +3,61 @@
  */
 public class AllThoseTerritories {
 
-    public static void main(String[] args) {
-        startGame();
+    public static void main(String[] args) { }
+
+
+    public static boolean playerTurn(boolean startPhase) {
+        if (startPhase) {
+            // acquire an uncontested territory
+            return false;
+        }
+
+
+        // normal turn
+        int reinforcements = checkReinforcements(Possession.ofPlayer);
+        boolean passTurn = false;
+        boolean winCon   = false;
+
+        while (!passTurn && !winCon) {
+            if (reinforcements > 0) {
+                // deploy reinforcements
+            } else {
+                // attack & move
+                winCon = checkWinCon(Possession.ofPlayer);
+            }
+        }
+        return winCon;
     }
 
+    public static boolean opponentTurn(boolean startPhase) {
+        if (startPhase) {
+            // acquire an uncontested territory
+            return false;
+        }
 
 
+        // normal turn
+        int reinforcements = checkReinforcements(Possession.ofOpponent);
+        boolean passTurn = false;
+        boolean winCon   = false;
 
-    public static void startGame() {
-        setupGame();
+        while (!passTurn && !winCon) {
+            if (reinforcements > 0) {
+                // deploy reinforcements
+            } else {
+                // attack & move
+                winCon = checkWinCon(Possession.ofOpponent);
+            }
+        }
+        return winCon;
     }
 
-    public static void setupGame() {
+    public static int checkReinforcements(Possession whichPlayer) {
+        return 0;
+    }
 
+    public static boolean checkWinCon(Possession whichPlayer) {
+        return false;
     }
 }
 
