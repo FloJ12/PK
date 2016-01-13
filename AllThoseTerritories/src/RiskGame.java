@@ -3,15 +3,11 @@
  */
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;
 import javafx.stage.Stage;
@@ -35,6 +31,11 @@ public class RiskGame extends Application {
     }
 
     @Override public void start(Stage stage) throws Exception {
+        // Start new game
+        Player user = new Player("User", true);
+        Player ki = new Player("KI", false);
+        AllThoseTerritories game = new AllThoseTerritories(new Player[] {user}, new Player[] {ki}, pathToMap);
+
         //Parent root2 = FXMLLoader.load(getClass().getResource("gui.fxml"));
         Group root = new Group();
         Scene scene = new Scene(root, 1250, 650);
@@ -51,24 +52,24 @@ public class RiskGame extends Application {
                 String line;
                 Map<String, Polygon> territories = new HashMap<>();
                 Map<String, Polyline> borders = new HashMap<>();
+                Map<String, Circle> capitals = new HashMap<>();
 
                 // Create a mapping for each Territory to its polygon and paint it
                 for(int i = 0; (line = in.readLine()) != null; i++){
                     String[] parts = line.split(" ");
+                    String territoryName = parts[1];
+
+                    // find Territory name (can be 1, 2 or 3 Words)
+                    int firstCoordinateIndex = 2;
+                    for(; !parts[firstCoordinateIndex].matches("[0-9]+") && !parts[firstCoordinateIndex].equals(":");
+                        firstCoordinateIndex++) {
+
+                        // For every item that is not a coordinate concatenate the items
+                        // to get territoryName
+                        territoryName = territoryName + " " + parts[firstCoordinateIndex];
+
+                    }
                     if(parts[0].equals("patch-of")) {
-                        String territoryName = parts[1];
-
-                        // find Territory name (can be 1, 2 or 3 Words)
-                        int firstCoordinateIndex = 2;
-                        for(; !parts[firstCoordinateIndex].matches("[0-9]+");
-                            firstCoordinateIndex++) {
-
-                            // For every item that is not a coordinate concatenate the items
-                            // to get territoryName
-                            territoryName = territoryName + " " + parts[firstCoordinateIndex];
-
-                        }
-
                         // map territoryName to corresponding polygon and polyline
                         territories.put(territoryName, new Polygon());
                         borders.put(territoryName, new Polyline());
@@ -86,6 +87,18 @@ public class RiskGame extends Application {
                         g.getChildren().add(borders.get(territoryName));
                         g.getChildren().add(territories.get(territoryName));
                     }
+                    // TODO: Use following points to show count of deployed armies
+                    else if(parts[0].equals("capital-of")) {
+                        double xcoordinate = Double.parseDouble(parts[firstCoordinateIndex]);
+                        double ycoordinate = Double.parseDouble(parts[firstCoordinateIndex+1]);
+                        capitals.put(territoryName, new Circle(xcoordinate, ycoordinate, 2d));
+                        g.getChildren().add(capitals.get(territoryName));
+                    }
+                    else if(parts[0].equals("neighbors-of")) {
+                        // firstCoordinateIndex is at ":", need to be one more
+                        firstCoordinateIndex++;
+
+                    }
                 }
             } finally {
                 if (in != null) {
@@ -98,6 +111,9 @@ public class RiskGame extends Application {
         }
         scene.setRoot(g);
         stage.show();
+        // TODO: Uncomment following when real turns are implemented (now they result in infinity loops)
+        //game.phaseOccupy();
+        //game.phaseConquer();
     }
 
     @Override public void stop() {}

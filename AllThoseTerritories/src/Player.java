@@ -19,12 +19,12 @@ public class Player {
         boolean gameWon   = false;
 
         while (!turnCompleted && !gameWon) {
-            gameWon = checkIfGameWon();
             // TODO: attacking and moving of armies
+            gameWon = checkIfGameWon();
         }
     }
 
-    private void deployReinforcements() {
+    public void deployReinforcements() {
         availableReinforcements = checkCountOfReinforcements();
         if (availableReinforcements > 0) {
             // TODO: deploy reinforcements
