@@ -2,27 +2,38 @@
  * Created by nam on 08.01.16.
  */
 public class AllThoseTerritories {
-    Player user = new Player("User", true);
-    Player ki = new Player("KI", false);
-    Territory[] territories = {}; // TODO: Read Territories from file
-    // TODO: Make methods static
 
-    public static void main(String[] args) {
+    private Territory[] territories = {};
+    private Player[] humanPlayers;
+    private Player[] kiPlayers;
+
+    public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers) {
+        this.territories = null; // TODO: Read Territories from file
+        this.humanPlayers = humanPlayers;
+        this.kiPlayers = kiPlayers;
     }
 
     public void phaseOccupy() {
         while(!allOccupied()) {
-            user.occupy();
-            ki.occupy();
+            for(Player user : humanPlayers) {
+                user.occupy();
+            }
+            for(Player ki : kiPlayers) {
+                ki.occupy();
+            }
         }
     }
 
     public void phaseConquer() {
-        user.attackAndMove();
-        ki.attackAndMove();
+        for(Player user : humanPlayers) {
+            user.attackAndMove();
+        }
+        for(Player ki : kiPlayers) {
+            ki.attackAndMove();
+        }
     }
 
-    public boolean allOccupied() {
+    private boolean allOccupied() {
         for (Territory t : territories) {
             if (t.owned_by == null) {
                 return false;
@@ -30,13 +41,21 @@ public class AllThoseTerritories {
         }
         return true;
     }
+
+    public static void main(String[] args) {
+        Player user = new Player("User", true);
+        Player ki = new Player("KI", false);
+        AllThoseTerritories game = new AllThoseTerritories(new Player[] {user}, new Player[] {ki});
+        game.phaseOccupy();
+        game.phaseConquer();
+    }
 }
 
 class Continent {
     String c_name;
     Territory[] territories;
 
-    Continent(String c_name, int tNum) {
+    public Continent(String c_name, int tNum) {
         this.c_name = c_name;
         this.territories = new Territory[tNum];
     }
@@ -48,7 +67,7 @@ class Territory {
     int armyStrength;
     Territory[] adjacency;
 
-    Territory(String t_name, int edgesNum) {
+    public Territory(String t_name, int edgesNum) {
         this.t_name = t_name;
         this.owned_by = null;
         this.armyStrength = 0;
@@ -69,13 +88,6 @@ class Player {
         // TODO: acquire an uncontested territory
     }
 
-    public void deployReinforcements() {
-        availableReinforcements = checkCountOfReinforcements();
-        if (availableReinforcements > 0) {
-            // TODO: deploy reinforcements
-        }
-    }
-
     public void attackAndMove() {
         boolean turnCompleted = false;
         boolean gameWon   = false;
@@ -86,12 +98,19 @@ class Player {
         }
     }
 
-    public int checkCountOfReinforcements() {
+    private void deployReinforcements() {
+        availableReinforcements = checkCountOfReinforcements();
+        if (availableReinforcements > 0) {
+            // TODO: deploy reinforcements
+        }
+    }
+
+    private int checkCountOfReinforcements() {
         // TODO: count territories owned by this player and calculate resulting available reinforcements
         return 0;
     }
 
-    public boolean checkIfGameWon() {
+    private boolean checkIfGameWon() {
         // TODO: check if all territories are owned by this player
         return false;
     }
