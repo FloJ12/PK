@@ -10,6 +10,10 @@ public class Player {
         this.isHuman = isHuman;
     }
 
+    public String toString() {
+        return name;
+    }
+
     public void occupy() {
         // TODO: acquire an uncontested territory
     }

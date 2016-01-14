@@ -3,14 +3,15 @@
  */
 
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -49,13 +50,14 @@ public class RiskGame extends Application {
             try {
                 in = new BufferedReader(new FileReader(pathToMap));
                 String line;
+                Map<Polygon, Territory> territoryOfPolygon = new HashMap<>();
 
                 // Create a mapping for each Territory to its polygon and paint it
                 for(int i = 0; (line = in.readLine()) != null; i++){
                     String[] parts = line.split(" ");
                     String name = getName(parts);
                     int firstCoordinateIndex = getFirstCoordinateIndex(parts);
-                    Territory territory = game.getTerritories().get(name);
+                    Territory territory = game.getTerritoriesMap().get(name);
 
                     if(parts[0].equals("patch-of")) {
                         // add polygon and polyline to territory
@@ -69,9 +71,20 @@ public class RiskGame extends Application {
                             polyline.getPoints().addAll(coordinate);
                         }
 
+                        // add the polygon to the Territorymap
+                        territoryOfPolygon.put(polygon, territory);
+
                         // Set a few more parameters
                         polygon.setFill(Color.LIGHTGRAY);
                         polyline.setStrokeWidth(2.5);
+
+                        // Create an event handler for the polygon
+                        polygon.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                            @Override
+                            public void handle(MouseEvent event) {
+                                game.territoryClicked(territoryOfPolygon.get(polygon));
+                            }
+                        });
 
                         // Add the resulting Polygon and Polylines to the Territory
                         territory.addPolygon(polygon);
@@ -101,7 +114,7 @@ public class RiskGame extends Application {
 
         // First the connecting lines between neighbors, so that those of land-neighbors are later hidden
         // by the land-polygons
-        for(Map.Entry<String, Territory> t_entry : game.getTerritories().entrySet()) {
+        for(Map.Entry<String, Territory> t_entry : game.getTerritoriesMap().entrySet()) {
             Territory t = t_entry.getValue();
             for (Map.Entry<String, Territory> n_entry : t.getNeighbors().entrySet()) {
                 Territory n = n_entry.getValue();
@@ -121,7 +134,7 @@ public class RiskGame extends Application {
         }
 
         // Then the polygons borders, and armystrength for every territory
-        for(Map.Entry<String, Territory> t_entry : game.getTerritories().entrySet()) {
+        for(Map.Entry<String, Territory> t_entry : game.getTerritoriesMap().entrySet()) {
             Territory t = t_entry.getValue();
             // Add all polygons and polylines to the GUI
             for(Polygon p : t.getPolygons()) {
@@ -130,16 +143,17 @@ public class RiskGame extends Application {
             for(Polyline p : t.getPolylines()) {
                 g.getChildren().add(p);
             }
-            // Add armystrength
-            String armystrength = Integer.toString(t.armyStrength);
-            g.getChildren().add(new Text(t.getCapital().getX(), t.getCapital().getY(), armystrength));
+            // Add armystrength of territory
+            Label lbl = new Label("0");
+            t.addLabel(lbl);
+            g.getChildren().add(lbl);
         }
 
         // Other colors for borders of territories of other continents
         Color[] colors = {Color.VIOLET, Color.GREEN, Color.ORANGE, Color.BLACK, Color.YELLOW, Color.BROWN};
         int colorIndex = 0;
         // For every continent paint borders of every territory
-        for (Map.Entry<String, Continent> c_entry : game.getContinents().entrySet()) {
+        for (Map.Entry<String, Continent> c_entry : game.getContinentsMap().entrySet()) {
             Continent continent = c_entry.getValue();
             for (Map.Entry<String, Territory> entry : continent.territories.entrySet()) {
                 Territory t = entry.getValue();
@@ -149,13 +163,16 @@ public class RiskGame extends Application {
         }
         scene.setRoot(g);
         stage.show();
-        // TODO: Uncomment following when real turns are implemented (now they result in infinity loops)
+        game.start();
+        //Following may be outdated, is now called via eventhandlers for GUI
         //game.phaseOccupy();
         //game.phaseConquer();
     }
 
     @Override public void stop() {}
 
+    // Finds first index of an array which is a coordinate
+    //Array is constructed from a line of a file formatted like world.map (split by " ")
     private static int getFirstCoordinateIndex(String[] parts) {
         String territoryName = parts[1];
 
@@ -166,6 +183,8 @@ public class RiskGame extends Application {
         return firstCoordinateIndex;
     }
 
+    //Finds the name of a territory/continent out of an array.
+    //Array is constructed from a line of a file formatted like world.map (split by " ")
     private static String getName(String[] parts) {
         String territoryName = parts[1];
 

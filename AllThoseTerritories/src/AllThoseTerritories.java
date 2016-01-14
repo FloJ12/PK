@@ -5,8 +5,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class AllThoseTerritories {
 
@@ -14,6 +13,8 @@ public class AllThoseTerritories {
     private Map<String, Continent> continents;
     private Player[] humanPlayers;
     private Player[] kiPlayers;
+    private boolean phaseOccupy;
+    private boolean phaseConqer;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
@@ -195,6 +196,53 @@ public class AllThoseTerritories {
         return territoryName;
     }
 
+    //Is called when a territory is clicked.
+    public void territoryClicked(Territory territory) {
+        if (phaseOccupy) {
+            // Only call code if clicked territory is not owned by someone else
+            if (territory.owned_by == null) {
+                // Human selection
+                territory.setOwner(humanPlayers[0]);
+                territory.increaseArmyStrength(1);
+                System.out.println(territory.name + " is now owned by " + territory.owned_by);
+
+                // KI selection
+                Territory randomTerritory =  getRandomUnoccupiedTerritory();
+                randomTerritory.setOwner(kiPlayers[0]);
+                randomTerritory.increaseArmyStrength(1);
+                System.out.println(randomTerritory.name + " is now owned by " + randomTerritory.owned_by);
+
+                // if no territories are available any more, start conquer phase
+                if (allOccupied()) {
+                    phaseOccupy = false;
+                    phaseConqer = true;
+                }
+            }
+        } else if (phaseConqer) {
+            System.out.println("Start: Conquer");
+            //TODO: Write code for Conquer phase
+        }
+    }
+
+    public void start() {
+        this.phaseOccupy = true;
+    }
+
+    //Returns a random unoccupied territory
+    private Territory getRandomUnoccupiedTerritory() {
+        Random random = new Random();
+        List<String> keys = new ArrayList<String>();
+        for (Map.Entry<String, Territory> entry : this.getTerritoriesMap().entrySet()) {
+            String key = entry.getKey();
+            if (entry.getValue().owned_by == null) {
+                keys.add(key);
+            }
+        }
+        String randomKey = keys.get(random.nextInt(keys.size()));
+        return this.getTerritoriesMap().get(randomKey);
+    }
+
+    // May be outdated
     public void phaseOccupy() {
         // As long as not all territories are occupied, this phase continues
         while(!allOccupied()) {
@@ -207,6 +255,7 @@ public class AllThoseTerritories {
         }
     }
 
+    // May be outdated
     public void phaseConquer() {
         // As long as the game is not won, this phase continues
         // Parameter for isWon(Player player) can be anybody who owns a territory
@@ -229,11 +278,11 @@ public class AllThoseTerritories {
         }
     }
 
-    public Map<String, Territory> getTerritories() {
+    public Map<String, Territory> getTerritoriesMap() {
         return territories;
     }
 
-    public Map<String, Continent> getContinents() {
+    public Map<String, Continent> getContinentsMap() {
         return continents;
     }
 
@@ -245,6 +294,7 @@ public class AllThoseTerritories {
         return kiPlayers;
     }
 
+    //Returns an array containing human players first and then KI players
     public Player[] getPlayers() {
         int aLen = getHumanPlayers().length;
         int bLen = getKiPlayers().length;
@@ -254,10 +304,12 @@ public class AllThoseTerritories {
         return c;
     }
 
+    // Returns true iff all Territories of the game are occupied by a user
     private boolean allOccupied() {
         return isWon(null);
     }
 
+    // Returns true iff user owns all territories
     private boolean isWon(Player user) {
         // Iterate over whole Map
         for (Map.Entry<String, Territory> entry : territories.entrySet()) {
