@@ -1,12 +1,20 @@
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Florian on 13.01.2016.
  */
 public class Continent {
     String c_name;
-    Territory[] territories;
+    Map<String, Territory> territories = new HashMap<>();
+    int bonus;
 
-    public Continent(String c_name, int tNum) {
-        this.c_name = c_name;
-        this.territories = new Territory[tNum];
+    public Continent(String name, int bonus) {
+        this.c_name = name;
+        this.bonus = bonus;
+    }
+
+    public void addTerritory(Territory territory) {
+        territories.put(territory.name, territory);
     }
 }

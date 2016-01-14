@@ -11,15 +11,20 @@ import java.util.Map;
 public class AllThoseTerritories {
 
     private Map<String, Territory> territories;
+    private Map<String, Continent> continents;
     private Player[] humanPlayers;
     private Player[] kiPlayers;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
+        this.continents = readContinents(pathToMap);
         this.humanPlayers = humanPlayers;
         this.kiPlayers = kiPlayers;
     }
 
+    // Returns a Map containing all Territories. By doing this,
+    // it instantiates all Territory objects, adds it to the map,
+    // and then calls addNeighbors.
     private Map<String, Territory> readTerritories(String pathToMap) {
         try {
             // Two buffered reader exceptions like the examples in the lecture
@@ -32,18 +37,46 @@ public class AllThoseTerritories {
                 String line;
                 for(int i = 0; (line = in.readLine()) != null; i++){
                     String[] parts = line.split(" ");
-                    String territoryName = getTerritoryName(parts);
+                    String territoryName = getName(parts);
                     if(parts[0].equals("patch-of")) {
                         territoryMap.put(territoryName, new Territory(territoryName));
                     }
+                }
+                addNeighbors(pathToMap, territoryMap);
+                return territoryMap;
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
+            }
+        }
+        catch(IOException ex) {
+            System.err.println("I/O Error: " + ex.getMessage());
+        }
+        return null;
+    }
+
+    // Adds all neighbors of territories. Territories and all neighbors of these territories
+    // specified in "neighbor-of" lines must exist in territoryMap
+    private void addNeighbors(String pathToMap, Map<String, Territory> territoryMap) {
+        try {
+            // Two buffered reader exceptions like the examples in the lecture
+            BufferedReader in = null;
+            try {
+                // Read file line by line, process only "neighbors-of" lines
+                in = new BufferedReader(new FileReader(pathToMap));
+                String line;
+                for(int i = 0; (line = in.readLine()) != null; i++){
+                    String[] parts = line.split(" ");
+                    String territoryName = getName(parts);
                     if(parts[0].equals("neighbors-of")) {
-                        // Get place of first neighbor in file
-                        int firstNeigborIndex = getFirstNeighborIndex(parts);
+                        // Get place of first neighbor in line
+                        int firstNeighborIndex = getFirstTerritoryIndex(parts);
 
                         // Build a String containing only neighbors seperated by -
                         // i.e. Alaska-Great Britain-North Western Territory
                         StringBuilder builder = new StringBuilder();
-                        for (int j = firstNeigborIndex; j < parts.length; j++) {
+                        for (int j = firstNeighborIndex; j < parts.length; j++) {
                             // Add space only for Territories, not before and after separator - and :
                             if(!parts[j-1].equals("-") && !parts[j-1].equals(":") && !parts[j].equals("-")) {
                                 builder.append(" " + parts[j]);
@@ -63,7 +96,65 @@ public class AllThoseTerritories {
                         }
                     }
                 }
-                return territoryMap;
+
+            } finally {
+                if (in != null) {
+                    in.close();
+                }
+            }
+        }
+        catch(IOException ex) {
+            System.err.println("I/O Error: " + ex.getMessage());
+        }
+    }
+
+    // Returns a map containing all continents. By doing this, it instantiates and creates all
+    // necessary Continent objects. Members of continents must
+    // exist in the territoryMap of "this" object.
+    private Map<String, Continent> readContinents(String pathToMap) {
+        try {
+            // Two buffered reader exceptions like the examples in the lecture
+            BufferedReader in = null;
+            try {
+                Map<String, Continent> continentMap = new HashMap<>();
+
+                // Read file line after line, process only continents
+                in = new BufferedReader(new FileReader(pathToMap));
+                String line;
+                for(int i = 0; (line = in.readLine()) != null; i++){
+                    String[] parts = line.split(" ");
+                    String continentName = getName(parts);
+                    if(parts[0].equals("continent")) {
+                        // Get place of first member in line
+                        int firstTerritoryIndex = getFirstTerritoryIndex(parts);
+                        // Instantiate continent object and add it to the map
+                        int bonus = Integer.parseInt(parts[firstTerritoryIndex - 2]);
+                        continentMap.put(continentName, new Continent(continentName, bonus));
+
+                        // Build a String containing only members seperated by -
+                        // i.e. Alaska-Great Britain-North Western Territory
+                        StringBuilder builder = new StringBuilder();
+                        for (int j = firstTerritoryIndex; j < parts.length; j++) {
+                            // Add space only for Territories, not before and after separator - and :
+                            if(!parts[j-1].equals("-") && !parts[j-1].equals(":") && !parts[j].equals("-")) {
+                                builder.append(" " + parts[j]);
+                            } else {
+                                builder.append(parts[j]);
+                            }
+                        }
+                        String territoriesString = builder.toString();
+
+                        // Split String to get Array containing only members as strings
+                        String[] territoriesArray = territoriesString.split("-");
+
+                        // Add every corresponding member Territory object to the current continent
+                        for (String territoryString : territoriesArray) {
+                            Territory territory = territories.get(territoryString);
+                            continentMap.get(continentName).addTerritory(territory);
+                        }
+                    }
+                }
+                return continentMap;
             } finally {
                 if (in != null) {
                     in.close();
@@ -76,18 +167,18 @@ public class AllThoseTerritories {
         return null;
     }
 
-    // Returns first index containing neighbors for a "neighbor-of" line
-    // in an array resulting from a split line (separator " ")
-    private int getFirstNeighborIndex(String[] parts) {
-        int firstNeighborIndex = 2;
-        for(; !parts[firstNeighborIndex].equals(":");
-            firstNeighborIndex++) {}
-        return firstNeighborIndex + 1;
+    // Returns first index containing a Territory for a "neighbor-of" line
+    // or a "continent" line in an array resulting from a split line (separator " ")
+    private int getFirstTerritoryIndex(String[] parts) {
+        int firstTerritoryIndex = 2;
+        for(; !parts[firstTerritoryIndex].equals(":");
+            firstTerritoryIndex++) {}
+        return firstTerritoryIndex + 1;
     }
 
     // Returns territory name from an array resulting
     // from a split line (separator " ")
-    private String getTerritoryName(String[] parts) {
+    private String getName(String[] parts) {
         String territoryName = parts[1];
 
         // find Territory name (can be 1, 2 or 3 Words)

@@ -94,10 +94,8 @@ public class RiskGame extends Application {
                         capitals.put(territoryName, new Circle(xcoordinate, ycoordinate, 2d));
                         g.getChildren().add(capitals.get(territoryName));
                     }
-                    else if(parts[0].equals("neighbors-of")) {
-                        // firstCoordinateIndex is at ":", need to be one more
-                        firstCoordinateIndex++;
-
+                    else if(parts[0].equals("continent")) {
+                        // TODO: Visualization for continent
                     }
                 }
             } finally {
