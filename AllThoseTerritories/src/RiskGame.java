@@ -3,17 +3,17 @@
  */
 
 import javafx.application.Application;
+import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class RiskGame extends Application {
         //Parent root2 = FXMLLoader.load(getClass().getResource("gui.fxml"));
         Group root = new Group();
         Scene scene = new Scene(root, 1250, 650);
-        stage.setTitle("Hello World Example");
+        stage.setTitle("Risk game");
         stage.setScene(scene);
 
         Group g = new Group();
@@ -48,54 +48,44 @@ public class RiskGame extends Application {
             BufferedReader in = null;
             try {
                 in = new BufferedReader(new FileReader(pathToMap));
-
                 String line;
-                Map<String, Polygon> territories = new HashMap<>();
-                Map<String, Polyline> borders = new HashMap<>();
-                Map<String, Circle> capitals = new HashMap<>();
 
                 // Create a mapping for each Territory to its polygon and paint it
                 for(int i = 0; (line = in.readLine()) != null; i++){
                     String[] parts = line.split(" ");
-                    String territoryName = parts[1];
+                    String name = getName(parts);
+                    int firstCoordinateIndex = getFirstCoordinateIndex(parts);
+                    Territory territory = game.getTerritories().get(name);
 
-                    // find Territory name (can be 1, 2 or 3 Words)
-                    int firstCoordinateIndex = 2;
-                    for(; !parts[firstCoordinateIndex].matches("[0-9]+") && !parts[firstCoordinateIndex].equals(":");
-                        firstCoordinateIndex++) {
-
-                        // For every item that is not a coordinate concatenate the items
-                        // to get territoryName
-                        territoryName = territoryName + " " + parts[firstCoordinateIndex];
-
-                    }
                     if(parts[0].equals("patch-of")) {
-                        // map territoryName to corresponding polygon and polyline
-                        territories.put(territoryName, new Polygon());
-                        borders.put(territoryName, new Polyline());
+                        // add polygon and polyline to territory
+                        Polygon polygon = new Polygon();
+                        Polyline polyline = new Polyline();
 
                         // add every point to the polygon and polyline
                         for(int j = firstCoordinateIndex; j < parts.length; j++) {
                             double coordinate =  Double.parseDouble(parts[j]);
-                            territories.get(territoryName).getPoints().addAll(coordinate);
-                            borders.get(territoryName).getPoints().addAll(coordinate);
+                            polygon.getPoints().addAll(coordinate);
+                            polyline.getPoints().addAll(coordinate);
                         }
 
-                        // Add the resulting Polygon and Polylines to the Interface
-                        territories.get(territoryName).setFill(Color.LIGHTGRAY);
-                        borders.get(territoryName).setStrokeWidth(3);
-                        g.getChildren().add(borders.get(territoryName));
-                        g.getChildren().add(territories.get(territoryName));
+                        // Set a few more parameters
+                        polygon.setFill(Color.LIGHTGRAY);
+                        polyline.setStrokeWidth(2.5);
+
+                        // Add the resulting Polygon and Polylines to the Territory
+                        territory.addPolygon(polygon);
+                        territory.addPolyline(polyline);
+
+                        // Add them to the interface
+                        //g.getChildren().add(polygon);
+                        //g.getChildren().add(polyline);
                     }
-                    // TODO: Use following points to show count of deployed armies
                     else if(parts[0].equals("capital-of")) {
+                        // First add capital coordinates to the territory object
                         double xcoordinate = Double.parseDouble(parts[firstCoordinateIndex]);
                         double ycoordinate = Double.parseDouble(parts[firstCoordinateIndex+1]);
-                        capitals.put(territoryName, new Circle(xcoordinate, ycoordinate, 2d));
-                        g.getChildren().add(capitals.get(territoryName));
-                    }
-                    else if(parts[0].equals("continent")) {
-                        // TODO: Visualization for continent
+                        territory.addCapital(new Point2D(xcoordinate, ycoordinate));
                     }
                 }
             } finally {
@@ -107,6 +97,56 @@ public class RiskGame extends Application {
         catch(IOException ex) {
             System.err.println("I/O Error: " + ex.getMessage());
         }
+        // Paint everything in the right order
+
+        // First the connecting lines between neighbors, so that those of land-neighbors are later hidden
+        // by the land-polygons
+        for(Map.Entry<String, Territory> t_entry : game.getTerritories().entrySet()) {
+            Territory t = t_entry.getValue();
+            for (Map.Entry<String, Territory> n_entry : t.getNeighbors().entrySet()) {
+                Territory n = n_entry.getValue();
+                // Alaska and Kamtschatka connecting line should come from behind
+                if(t.name.equals("Alaska") && n.name.equals("Kamchatka")) {
+                    Polyline connection1 = new Polyline(t.getCapital().getX(), t.getCapital().getY(), 0, t.getCapital().getY());
+                    Polyline connection2 = new Polyline(1250, n.getCapital().getY(), n.getCapital().getX(), n.getCapital().getY());
+                    connection1.setStroke(Color.LIGHTGRAY);
+                    connection2.setStroke(Color.LIGHTGRAY);
+                    g.getChildren().addAll(connection1, connection2);
+                } else {
+                    Polyline connection = new Polyline(t.getCapital().getX(), t.getCapital().getY(), n.getCapital().getX(), n.getCapital().getY());
+                    connection.setStroke(Color.LIGHTGRAY);
+                    g.getChildren().add(connection);
+                }
+            }
+        }
+
+        // Then the polygons borders, and armystrength for every territory
+        for(Map.Entry<String, Territory> t_entry : game.getTerritories().entrySet()) {
+            Territory t = t_entry.getValue();
+            // Add all polygons and polylines to the GUI
+            for(Polygon p : t.getPolygons()) {
+                g.getChildren().add(p);
+            }
+            for(Polyline p : t.getPolylines()) {
+                g.getChildren().add(p);
+            }
+            // Add armystrength
+            String armystrength = Integer.toString(t.armyStrength);
+            g.getChildren().add(new Text(t.getCapital().getX(), t.getCapital().getY(), armystrength));
+        }
+
+        // Other colors for borders of territories of other continents
+        Color[] colors = {Color.VIOLET, Color.GREEN, Color.ORANGE, Color.BLACK, Color.YELLOW, Color.BROWN};
+        int colorIndex = 0;
+        // For every continent paint borders of every territory
+        for (Map.Entry<String, Continent> c_entry : game.getContinents().entrySet()) {
+            Continent continent = c_entry.getValue();
+            for (Map.Entry<String, Territory> entry : continent.territories.entrySet()) {
+                Territory t = entry.getValue();
+                t.setBorderColor(colors[colorIndex]);
+            }
+            colorIndex++;
+        }
         scene.setRoot(g);
         stage.show();
         // TODO: Uncomment following when real turns are implemented (now they result in infinity loops)
@@ -115,6 +155,32 @@ public class RiskGame extends Application {
     }
 
     @Override public void stop() {}
+
+    private static int getFirstCoordinateIndex(String[] parts) {
+        String territoryName = parts[1];
+
+        // find Territory name (can be 1, 2 or 3 Words)
+        int firstCoordinateIndex = 2;
+        for(; firstCoordinateIndex < parts.length && !parts[firstCoordinateIndex].matches("[0-9]+");
+            firstCoordinateIndex++) {}
+        return firstCoordinateIndex;
+    }
+
+    private static String getName(String[] parts) {
+        String territoryName = parts[1];
+
+        // find Territory name (can be 1, 2 or 3 Words)
+        int firstCoordinateIndex = 2;
+        for(; !parts[firstCoordinateIndex].matches("[0-9]+") && !parts[firstCoordinateIndex].equals(":");
+            firstCoordinateIndex++) {
+
+            // For every item that is not a coordinate concatenate the items
+            // to get territoryName
+            territoryName = territoryName + " " + parts[firstCoordinateIndex];
+
+        }
+        return territoryName;
+    }
 
     public static void main(String[] args) {
         if (args.length != 1) {

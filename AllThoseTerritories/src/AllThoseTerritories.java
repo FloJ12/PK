@@ -38,6 +38,7 @@ public class AllThoseTerritories {
                 for(int i = 0; (line = in.readLine()) != null; i++){
                     String[] parts = line.split(" ");
                     String territoryName = getName(parts);
+
                     if(parts[0].equals("patch-of")) {
                         territoryMap.put(territoryName, new Territory(territoryName));
                     }
@@ -226,6 +227,31 @@ public class AllThoseTerritories {
                 ki.attackAndMove();
             }
         }
+    }
+
+    public Map<String, Territory> getTerritories() {
+        return territories;
+    }
+
+    public Map<String, Continent> getContinents() {
+        return continents;
+    }
+
+    public Player[] getHumanPlayers() {
+        return humanPlayers;
+    }
+
+    public Player[] getKiPlayers() {
+        return kiPlayers;
+    }
+
+    public Player[] getPlayers() {
+        int aLen = getHumanPlayers().length;
+        int bLen = getKiPlayers().length;
+        Player[] c = new Player[aLen+bLen];
+        System.arraycopy(getHumanPlayers(), 0, c, 0, aLen);
+        System.arraycopy(getKiPlayers(), 0, c, aLen, bLen);
+        return c;
     }
 
     private boolean allOccupied() {
