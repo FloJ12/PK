@@ -229,6 +229,7 @@ public class AllThoseTerritories {
             }
         } else if (phaseConqer) {
             System.out.println("Start: Conquer");
+            territory.setSelected(true);
             //TODO: Verstärkungen ermitteln und verteilen
             //TODO: Write code for Conquer phase
         }
@@ -354,6 +355,10 @@ public class AllThoseTerritories {
             continent.paintBorders(colors[colorIndex]);
             colorIndex++;
         }
+    }
+
+    public void finishMove() {
+        System.out.println("Button pressed");
     }
 }
 

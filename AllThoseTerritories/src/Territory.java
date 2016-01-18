@@ -22,6 +22,7 @@ public class Territory {
     private List<Polyline> polylines = new ArrayList<>();
     private Point2D capital;
     private Label armyStrengthDisplay;
+    private boolean isSelected;
 
     public Territory(String name) {
         this.name = name;
@@ -66,6 +67,19 @@ public class Territory {
             }
         }
         owned_by = new_owner;
+    }
+
+    public void setSelected(boolean isSelected) {
+        this.isSelected = isSelected;
+        if(isSelected) {
+            for (Polygon p : polygons) {
+                p.setFill(Color.AQUA);
+            }
+        } else {
+            for (Polygon p: polygons) {
+                p.setFill(Color.DODGERBLUE);
+            }
+        }
     }
 
     public void setBorderColor(Color borderColor) {

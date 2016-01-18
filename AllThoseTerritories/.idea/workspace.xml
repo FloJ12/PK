@@ -25,8 +25,8 @@
       <file leaf-file-name="AllThoseTerritories.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AllThoseTerritories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
+            <state vertical-scroll-proportion="-67.757576">
+              <caret line="359" column="24" selection-start-line="359" selection-start-column="24" selection-end-line="359" selection-end-column="24" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -42,6 +42,8 @@
                 <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
                 <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
                 <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+                <element signature="e#14600#14601#0" expanded="true" />
+                <element signature="e#14652#14653#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/Player.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+              <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding>
                 <element signature="e#286#287#0" expanded="true" />
                 <element signature="e#313#314#0" expanded="true" />
@@ -64,13 +66,11 @@
         <entry file="file://$PROJECT_DIR$/src/Territory.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
+              <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
                 <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
                 <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-                <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,12 +92,13 @@
       <file leaf-file-name="RiskGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RiskGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.9645161">
-              <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.24787053">
+              <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+                <element signature="e#1909#1910#0" expanded="true" />
+                <element signature="e#1958#1959#0" expanded="true" />
                 <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
                 <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
                 <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -132,8 +133,8 @@
         <option value="$PROJECT_DIR$/src/AllThoseTerritories0.java" />
         <option value="$PROJECT_DIR$/src/gui.fxml" />
         <option value="$PROJECT_DIR$/src/Controller.java" />
-        <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/src/Continent.java" />
+        <option value="$PROJECT_DIR$/src/Player.java" />
         <option value="$PROJECT_DIR$/src/Territory.java" />
         <option value="$PROJECT_DIR$/src/AllThoseTerritories.java" />
         <option value="$PROJECT_DIR$/src/RiskGame.java" />
@@ -551,7 +552,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-16" y="-16" width="3232" height="1732" extended-state="6" />
+    <frame x="-16" y="-16" width="3232" height="1732" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -611,7 +612,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -638,6 +640,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -659,10 +663,8 @@
           <caret line="7" column="57" selection-start-line="7" selection-start-column="57" selection-end-line="7" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
             <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
             <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-            <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -685,7 +687,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -712,6 +715,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -733,10 +738,8 @@
           <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
             <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
             <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-            <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -759,7 +762,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -786,6 +790,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -807,10 +813,8 @@
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
             <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
             <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-            <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -833,7 +837,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -885,6 +890,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -906,10 +913,8 @@
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
             <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
             <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-            <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -932,7 +937,8 @@
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
@@ -984,6 +990,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1014,6 +1022,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1037,6 +1047,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1060,6 +1072,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1083,6 +1097,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1106,6 +1122,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1129,6 +1147,8 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1214,21 +1234,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Continent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="15" selection-start-line="12" selection-start-column="15" selection-end-line="12" selection-end-column="15" />
+          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
           <folding>
             <element signature="e#286#287#0" expanded="true" />
             <element signature="e#313#314#0" expanded="true" />
@@ -1236,24 +1245,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Territory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="94" column="42" selection-start-line="94" selection-start-column="42" selection-end-line="94" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#setOwner#0;class#Territory#0" expanded="false" />
-            <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
-            <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
-            <element signature="method#addPolygonsToGUI#0;class#Territory#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AllThoseTerritories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="210" column="45" selection-start-line="210" selection-start-column="45" selection-end-line="210" selection-end-column="45" />
+        <state vertical-scroll-proportion="-67.757576">
+          <caret line="359" column="24" selection-start-line="359" selection-start-column="24" selection-end-line="359" selection-end-column="24" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1269,18 +1264,44 @@
             <element signature="method#isWon#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#addAllToGUI#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#paintContinentBorders#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="e#14600#14601#0" expanded="true" />
+            <element signature="e#14652#14653#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Territory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="5" selection-start-line="82" selection-start-column="5" selection-end-line="82" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
+            <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Continent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RiskGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.9645161">
-          <caret line="47" column="28" selection-start-line="47" selection-start-column="28" selection-end-line="47" selection-end-column="28" />
+        <state vertical-scroll-proportion="0.24787053">
+          <caret line="54" column="8" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#createPolygon#0;class#RiskGame#0" expanded="false" />
+            <element signature="e#1909#1910#0" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
             <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
             <element signature="method#getName#0;class#RiskGame#0" expanded="false" />

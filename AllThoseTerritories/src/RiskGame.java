@@ -8,6 +8,7 @@ import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
@@ -45,11 +46,21 @@ public class RiskGame extends Application {
         stage.setScene(scene);
 
         Group g = new Group();
-        addGUIElementsToGame(AllThoseTerritories game);
+        addGUIElementsToGame(game);
         // Paint everything in the right order
         game.addAllToGUI(g);
         Color[] colors = {Color.VIOLET, Color.GREEN, Color.ORANGE, Color.BLACK, Color.YELLOW, Color.BROWN};
         game.paintContinentBorders(colors);
+
+        Button btn = new Button("Zug beenden");
+        btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                game.finishMove();
+            }
+        });
+        btn.relocate(1000, 500);
+        g.getChildren().add(btn);
 
         scene.setRoot(g);
         stage.show();
@@ -177,6 +188,7 @@ public class RiskGame extends Application {
             System.err.println(errmsg);
             return;
         }
+        // launch() = first run init() then start(), if program closed run stop()
         launch(args);
     }
 }
