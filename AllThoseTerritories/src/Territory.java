@@ -1,7 +1,6 @@
-import javafx.event.EventHandler;
 import javafx.geometry.Point2D;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;
@@ -75,19 +74,35 @@ public class Territory {
         }
     }
 
-    public Map<String, Territory> getNeighbors() {
-        return neighbors;
+    public void addLinesToGUI(Group g) {
+    for (Map.Entry<String, Territory> n_entry : neighbors.entrySet()) {
+            Territory n = n_entry.getValue();
+            // Alaska and Kamtschatka connecting line should come from behind
+            if(name.equals("Alaska") && n.name.equals("Kamchatka")) {
+                Polyline connection1 = new Polyline(capital.getX(), capital.getY(), 0, capital.getY());
+                Polyline connection2 = new Polyline(1250, n.capital.getY(), n.capital.getX(), n.capital.getY());
+                connection1.setStroke(Color.LIGHTGRAY);
+                connection2.setStroke(Color.LIGHTGRAY);
+                g.getChildren().addAll(connection1, connection2);
+            } else {
+                Polyline connection = new Polyline(capital.getX(), capital.getY(), n.capital.getX(), n.capital.getY());
+                connection.setStroke(Color.LIGHTGRAY);
+                g.getChildren().add(connection);
+            }
+        }
     }
 
-    public Point2D getCapital() {
-        return capital;
-    }
-
-    public List<Polygon> getPolygons() {
-        return polygons;
-    }
-
-    public List<Polyline> getPolylines() {
-        return polylines;
+    public void addPolygonsToGUI(Group g) {
+        // Add all polygons and polylines to the GUI
+        for(Polygon p : polygons) {
+            g.getChildren().add(p);
+        }
+        for(Polyline p : polylines) {
+            g.getChildren().add(p);
+        }
+        // Add armystrength of territory
+        Label lbl = new Label("0");
+        addLabel(lbl);
+        g.getChildren().add(lbl);
     }
 }

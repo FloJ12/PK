@@ -1,6 +1,14 @@
 /**
+ * An object is a "Game".
+ * It consist of its territories, its continents, its human players and its kiPlayers.
+ * When a new object is created, it reads all necessary information from the file
+ * of the command line parameter.
+ * There is also the listener for mouseclicks on territories, so the user can control his moves.
  * Created by nam on 08.01.16.
  */
+
+import javafx.scene.Group;
+import javafx.scene.paint.Color;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -216,10 +224,12 @@ public class AllThoseTerritories {
                 if (allOccupied()) {
                     phaseOccupy = false;
                     phaseConqer = true;
+                    // TODO: Erste Verstärkungen ermitteln
                 }
             }
         } else if (phaseConqer) {
             System.out.println("Start: Conquer");
+            //TODO: Verstärkungen ermitteln und verteilen
             //TODO: Write code for Conquer phase
         }
     }
@@ -319,6 +329,31 @@ public class AllThoseTerritories {
             }
         }
         return true;
+    }
+
+    public void addAllToGUI(Group g) {
+        // First the connecting lines between neighbors, so that those of land-neighbors are later hidden
+        // by the land-polygons
+        for(Map.Entry<String, Territory> t_entry : getTerritoriesMap().entrySet()) {
+            Territory t = t_entry.getValue();
+            t.addLinesToGUI(g);
+        }
+        // Then the polygons
+        for(Map.Entry<String, Territory> t_entry : getTerritoriesMap().entrySet()) {
+            Territory t = t_entry.getValue();
+            t.addPolygonsToGUI(g);
+        }
+    }
+
+    // Other colors for borders of territories of other continents
+    public void paintContinentBorders(Color[] colors) {
+        int colorIndex = 0;
+        // For every continent paint borders
+        for (Map.Entry<String, Continent> c_entry : continents.entrySet()) {
+            Continent continent = c_entry.getValue();
+            continent.paintBorders(colors[colorIndex]);
+            colorIndex++;
+        }
     }
 }
 
