@@ -56,7 +56,7 @@ public class RiskGame extends Application {
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                game.finishMove();
+                game.endTurn();
             }
         });
         btn.relocate(600, 550);

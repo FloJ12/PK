@@ -23,6 +23,7 @@ public class AllThoseTerritories {
     private Player[] kiPlayers;
     private boolean phaseOccupy;
     private boolean phaseConqer;
+    private boolean isPlayersTurn = true;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
@@ -224,19 +225,54 @@ public class AllThoseTerritories {
                 if (allOccupied()) {
                     phaseOccupy = false;
                     phaseConqer = true;
+                    System.out.println("Start: Conquer");
                     // TODO: Erste Verstärkungen ermitteln
+                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
+                    this.kiPlayers[0].availableReinforcements = calc_reinforce(kiPlayers[0]);
                 }
             }
         } else if (phaseConqer) {
-            System.out.println("Start: Conquer");
-            territory.setSelected(/* true */);
+            // System.out.println("Start: Conquer");
+
             //TODO: Verstärkungen ermitteln und verteilen
-            //TODO: Write code for Conquer phase
+            if (this.humanPlayers[0].availableReinforcements > 0) {
+
+                if (territory.owned_by == humanPlayers[0]) {
+                    territory.changeArmyStrength(1);
+                    this.humanPlayers[0].availableReinforcements--;
+                }
+
+                if (this.humanPlayers[0].availableReinforcements == 1) {
+
+                }
+
+            } else { //TODO: Write code for Conquer phase
+                territory.setSelected(humanPlayers[0]);
+            }
+
         }
     }
 
     public void start() {
         this.phaseOccupy = true;
+    }
+
+    private int calc_reinforce(Player player) {
+        int result = 0;
+        for (Map.Entry<String, Continent> entry : continents.entrySet()) {
+
+            if (entry.getValue().is_Of_Player(player)) {
+                result += entry.getValue().bonus;
+            }
+
+
+            for (Map.Entry<String, Territory> territory : entry.getValue().territories.entrySet()) {
+                if (territory.getValue().owned_by == player) {
+                    result++;
+                }
+            }
+        }
+        return result;
     }
 
     //Returns a random unoccupied territory
@@ -357,7 +393,7 @@ public class AllThoseTerritories {
         }
     }
 
-    public void finishMove() {
+    public void endTurn() {
         System.out.println("Button pressed");
     }
 }

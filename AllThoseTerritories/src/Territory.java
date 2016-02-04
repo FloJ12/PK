@@ -35,8 +35,8 @@ public class Territory {
         armyStrengthDisplay.relocate(capital.getX(), capital.getY());
     }
 
-    public void changeArmyStrength(int armyStrength) {    // increaseArmyS --> changeArmy...
-        this.armyStrength = this.armyStrength + armyStrength;
+    public void changeArmyStrength(int change) {    // increaseArmyS --> changeArmy...
+        this.armyStrength += change;
         armyStrengthDisplay.setText(Integer.toString(armyStrength));
     }
 
@@ -44,9 +44,7 @@ public class Territory {
         neighbors.put(neighbor.name, neighbor);
     }
 
-    public void addCapital(Point2D capital) {
-        this.capital = capital;
-    }
+    public void addCapital(Point2D capital) {this.capital = capital;}
 
     public void addPolygon(Polygon polygon) {
         polygons.add(polygon);
@@ -69,18 +67,32 @@ public class Territory {
         owned_by = new_owner;
     }
 
-    public void setSelected() {
+    public void setSelected(Player active_player) {
         // this.isSelected = isSelected;
         if( !this.isSelected ) {
             this.isSelected = true;
-            for (Polygon p : polygons) {
-                p.setFill(Color.AQUA);
-            }
+             if (owned_by == active_player) {
+                 for (Polygon p : polygons) {
+                     p.setFill(Color.AQUA);
+                 }
+             } else {
+                 for (Polygon p : polygons) {
+                     p.setFill(Color.BROWN);
+                 }
+             }
+
         } else {
-            for (Polygon p: polygons) {
-                p.setFill(Color.DODGERBLUE);
-            }
             this.isSelected = false;
+            if (owned_by == active_player) {
+                for (Polygon p : polygons) {
+                    p.setFill(Color.DODGERBLUE);
+                }
+            } else {
+                for (Polygon p : polygons) {
+                    p.setFill(Color.INDIANRED);
+                }
+            }
+
         }
     }
 
