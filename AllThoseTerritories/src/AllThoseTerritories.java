@@ -211,13 +211,13 @@ public class AllThoseTerritories {
             if (territory.owned_by == null) {
                 // Human selection
                 territory.setOwner(humanPlayers[0]);
-                territory.increaseArmyStrength(1);
+                territory.changeArmyStrength(1);
                 System.out.println(territory.name + " is now owned by " + territory.owned_by);
 
                 // KI selection
                 Territory randomTerritory =  getRandomUnoccupiedTerritory();
                 randomTerritory.setOwner(kiPlayers[0]);
-                randomTerritory.increaseArmyStrength(1);
+                randomTerritory.changeArmyStrength(1);
                 System.out.println(randomTerritory.name + " is now owned by " + randomTerritory.owned_by);
 
                 // if no territories are available any more, start conquer phase
@@ -229,7 +229,7 @@ public class AllThoseTerritories {
             }
         } else if (phaseConqer) {
             System.out.println("Start: Conquer");
-            territory.setSelected(true);
+            territory.setSelected(/* true */);
             //TODO: Verstärkungen ermitteln und verteilen
             //TODO: Write code for Conquer phase
         }

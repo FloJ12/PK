@@ -59,7 +59,7 @@ public class RiskGame extends Application {
                 game.finishMove();
             }
         });
-        btn.relocate(1000, 500);
+        btn.relocate(600, 550);
         g.getChildren().add(btn);
 
         scene.setRoot(g);

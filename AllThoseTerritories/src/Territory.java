@@ -22,7 +22,7 @@ public class Territory {
     private List<Polyline> polylines = new ArrayList<>();
     private Point2D capital;
     private Label armyStrengthDisplay;
-    private boolean isSelected;
+    private boolean isSelected = false;
 
     public Territory(String name) {
         this.name = name;
@@ -35,7 +35,7 @@ public class Territory {
         armyStrengthDisplay.relocate(capital.getX(), capital.getY());
     }
 
-    public void increaseArmyStrength(int armyStrength) {
+    public void changeArmyStrength(int armyStrength) {    // increaseArmyS --> changeArmy...
         this.armyStrength = this.armyStrength + armyStrength;
         armyStrengthDisplay.setText(Integer.toString(armyStrength));
     }
@@ -69,9 +69,10 @@ public class Territory {
         owned_by = new_owner;
     }
 
-    public void setSelected(boolean isSelected) {
-        this.isSelected = isSelected;
-        if(isSelected) {
+    public void setSelected() {
+        // this.isSelected = isSelected;
+        if( !this.isSelected ) {
+            this.isSelected = true;
             for (Polygon p : polygons) {
                 p.setFill(Color.AQUA);
             }
@@ -79,6 +80,7 @@ public class Territory {
             for (Polygon p: polygons) {
                 p.setFill(Color.DODGERBLUE);
             }
+            this.isSelected = false;
         }
     }
 
