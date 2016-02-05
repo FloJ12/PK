@@ -26,7 +26,8 @@ public class AllThoseTerritories {
     private boolean stepReinforcements = true;
     private boolean stepAttackAndMove = false;
     private boolean isPlayersTurn = true;
-    public int count_selected;
+    private Territory own;
+    private Territory enemy;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
@@ -249,9 +250,27 @@ public class AllThoseTerritories {
             }
             else if(stepAttackAndMove) {
                 System.out.println("Attack");
-                count_selected += territory.setSelected(humanPlayers[0], count_selected);
-                attack(Territory own, Territory enemy);
-                move(int armies, Territory source, Territory dest);
+                if (territory.owned_by == this.humanPlayers[0]) {
+                    if (own == null) {
+                        own = territory;
+                        own.setSelected(true);
+                    }
+                    else if (own != territory) {
+                        own.setSelected(false); // is old selected territory, deselect
+                        own = territory;
+                        own.setSelected(true);
+                    }
+                    else if (own == territory) {
+                        own.setSelected(false);
+                        own = null;
+                    }
+                }
+                else if (own != null && territory.owned_by == this.kiPlayers[0]) {
+                    enemy = territory;
+                    enemy.setSelected(true);
+                }
+                //attack(Territory own, Territory enemy);
+                //move(int armies, Territory source, Territory dest);
             }
             //TODO: Verstärkungen ermitteln und verteilen
             /*if (this.humanPlayers[0].availableReinforcements > 0) {
