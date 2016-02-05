@@ -23,6 +23,8 @@ public class AllThoseTerritories {
     private Player[] kiPlayers;
     private boolean phaseOccupy;
     private boolean phaseConqer;
+    private boolean stepReinforcements = true;
+    private boolean stepAttackAndMove = false;
     private boolean isPlayersTurn = true;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
@@ -227,14 +229,28 @@ public class AllThoseTerritories {
                     phaseConqer = true;
                     // TODO: Erste Verstärkungen ermitteln
                     this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
-                    this.kiPlayers[0].availableReinforcements = calc_reinforce(kiPlayers[0]);
+                    this.humanPlayers[0].updateLabel();
                 }
             }
         } else if (phaseConqer) {
             // System.out.println("Start: Conquer");
-
+            if(stepReinforcements) {
+                if(this.humanPlayers[0].availableReinforcements == 0) {
+                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
+                }
+                else {
+                    this.humanPlayers[0].deployReinforcement(territory);
+                    if(this.humanPlayers[0].availableReinforcements == 0) {
+                        stepReinforcements = false;
+                        stepAttackAndMove = true;
+                    }
+                }
+            }
+            else if(stepAttackAndMove) {
+                System.out.println("Attack");
+            }
             //TODO: Verstärkungen ermitteln und verteilen
-            if (this.humanPlayers[0].availableReinforcements > 0) {
+            /*if (this.humanPlayers[0].availableReinforcements > 0) {
 
                 if (territory.owned_by == humanPlayers[0]) {
                     territory.changeArmyStrength(1);
@@ -244,10 +260,9 @@ public class AllThoseTerritories {
                 if (this.humanPlayers[0].availableReinforcements == 1) {
 
                 }
-
             } else { //TODO: Write code for Conquer phase
                 territory.setSelected(humanPlayers[0]);
-            }
+            }*/
 
         }
     }
@@ -257,9 +272,8 @@ public class AllThoseTerritories {
         for (Map.Entry<String, Continent> entry : continents.entrySet()) {
 
             if (entry.getValue().is_Of_Player(player)) {
-                result += entry.getValue().bonus;
+                result += entry.getValue().bonus * 3;
             }
-
 
             for (Map.Entry<String, Territory> territory : entry.getValue().territories.entrySet()) {
                 if (territory.getValue().owned_by == player) {
@@ -267,7 +281,7 @@ public class AllThoseTerritories {
                 }
             }
         }
-        return result;
+        return result / 3;
     }
 
     public void start() {

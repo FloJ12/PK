@@ -17,10 +17,26 @@ public class Player {
         this.isHuman = isHuman;
     }
 
+    public void deployReinforcement(Territory t) {
+        if(availableReinforcements > 0) {
+            availableReinforcements--;
+            t.changeArmyStrength(1);
+            updateLabel();
+        } else {
+            System.out.println("You don't have enough reinforcements available.");
+        }
+    }
+
+    public void updateLabel() {
+        reinforce_status.setText("Available reinforcements: " + availableReinforcements);
+    }
+
     public void addLabel(Label label) {
         this.reinforce_status = label;
+        updateLabel();
         label.relocate(800, 600);
     }
+
     public String toString() {
         return name;
     }
