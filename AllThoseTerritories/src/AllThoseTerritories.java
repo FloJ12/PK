@@ -250,6 +250,8 @@ public class AllThoseTerritories {
             else if(stepAttackAndMove) {
                 System.out.println("Attack");
                 count_selected += territory.setSelected(humanPlayers[0], count_selected);
+                attack(Territory own, Territory enemy);
+                move(int armies, Territory source, Territory dest);
             }
             //TODO: Verstärkungen ermitteln und verteilen
             /*if (this.humanPlayers[0].availableReinforcements > 0) {

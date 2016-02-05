@@ -25,8 +25,8 @@
       <file leaf-file-name="AllThoseTerritories.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AllThoseTerritories.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.9099679">
-              <caret line="283" column="25" selection-start-line="283" selection-start-column="25" selection-end-line="283" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.50277007">
+              <caret line="253" column="67" selection-start-line="253" selection-start-column="67" selection-end-line="253" selection-end-column="67" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -35,21 +35,6 @@
                 <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
                 <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
                 <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-                <element signature="e#12325#12326#0" expanded="true" />
-                <element signature="e#12364#12365#0" expanded="true" />
-                <element signature="e#12545#12553#0" expanded="true" />
-                <element signature="e#14295#14296#0" expanded="true" />
-                <element signature="e#14329#14330#0" expanded="true" />
-                <element signature="e#14385#14386#0" expanded="true" />
-                <element signature="e#14418#14419#0" expanded="true" />
-                <element signature="e#14459#14460#0" expanded="true" />
-                <element signature="e#14494#14495#0" expanded="true" />
-                <element signature="e#14532#14533#0" expanded="true" />
-                <element signature="e#14564#14565#0" expanded="true" />
-                <element signature="e#15061#15062#0" expanded="true" />
-                <element signature="e#15095#15096#0" expanded="true" />
-                <element signature="e#16493#16494#0" expanded="true" />
-                <element signature="e#16545#16546#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -174,7 +159,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -209,7 +194,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -568,27 +553,27 @@
     <frame x="-16" y="-16" width="3232" height="1732" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932532" sideWeight="0.50125" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932532" sideWeight="0.49875" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13360053" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994656" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3275862" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13360053" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32932532" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3994656" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -618,6 +603,67 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/AllThoseTerritories.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#readTerritories#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="method#addNeighbors#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
+            <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="22" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#747#748#0" expanded="true" />
+            <element signature="e#843#844#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Territory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="27" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="27" />
+          <folding>
+            <element signature="method#setBorderColor#0;class#Territory#0" expanded="false" />
+            <element signature="method#addLinesToGUI#0;class#Territory#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Continent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/RiskGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="64" column="52" selection-start-line="64" selection-start-column="36" selection-end-line="64" selection-end-column="52" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#createPolyline#0;class#RiskGame#0" expanded="false" />
+            <element signature="method#getFirstCoordinateIndex#0;class#RiskGame#0" expanded="false" />
+            <element signature="method#getName#0;class#RiskGame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Territory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -649,21 +695,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -725,21 +756,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -815,21 +831,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -891,21 +892,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -967,21 +953,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1043,21 +1014,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1119,21 +1075,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1150,21 +1091,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1181,21 +1107,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1212,21 +1123,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1243,21 +1139,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1274,21 +1155,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1305,21 +1171,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1371,8 +1222,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AllThoseTerritories.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.9099679">
-          <caret line="283" column="25" selection-start-line="283" selection-start-column="25" selection-end-line="283" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.50277007">
+          <caret line="253" column="67" selection-start-line="253" selection-start-column="67" selection-end-line="253" selection-end-column="67" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
@@ -1381,21 +1232,6 @@
             <element signature="method#readContinents#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getFirstTerritoryIndex#0;class#AllThoseTerritories#0" expanded="false" />
             <element signature="method#getName#0;class#AllThoseTerritories#0" expanded="false" />
-            <element signature="e#12325#12326#0" expanded="true" />
-            <element signature="e#12364#12365#0" expanded="true" />
-            <element signature="e#12545#12553#0" expanded="true" />
-            <element signature="e#14295#14296#0" expanded="true" />
-            <element signature="e#14329#14330#0" expanded="true" />
-            <element signature="e#14385#14386#0" expanded="true" />
-            <element signature="e#14418#14419#0" expanded="true" />
-            <element signature="e#14459#14460#0" expanded="true" />
-            <element signature="e#14494#14495#0" expanded="true" />
-            <element signature="e#14532#14533#0" expanded="true" />
-            <element signature="e#14564#14565#0" expanded="true" />
-            <element signature="e#15061#15062#0" expanded="true" />
-            <element signature="e#15095#15096#0" expanded="true" />
-            <element signature="e#16493#16494#0" expanded="true" />
-            <element signature="e#16545#16546#0" expanded="true" />
           </folding>
         </state>
       </provider>
