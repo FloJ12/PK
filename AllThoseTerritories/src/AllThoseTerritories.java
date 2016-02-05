@@ -225,7 +225,6 @@ public class AllThoseTerritories {
                 if (allOccupied()) {
                     phaseOccupy = false;
                     phaseConqer = true;
-                    System.out.println("Start: Conquer");
                     // TODO: Erste Verstärkungen ermitteln
                     this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
                     this.kiPlayers[0].availableReinforcements = calc_reinforce(kiPlayers[0]);
@@ -253,10 +252,6 @@ public class AllThoseTerritories {
         }
     }
 
-    public void start() {
-        this.phaseOccupy = true;
-    }
-
     private int calc_reinforce(Player player) {
         int result = 0;
         for (Map.Entry<String, Continent> entry : continents.entrySet()) {
@@ -273,6 +268,10 @@ public class AllThoseTerritories {
             }
         }
         return result;
+    }
+
+    public void start() {
+        this.phaseOccupy = true;
     }
 
     //Returns a random unoccupied territory

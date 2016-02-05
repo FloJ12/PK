@@ -1,3 +1,9 @@
+import javafx.scene.control.Label;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Created by Florian on 13.01.2016.
  */
@@ -5,11 +11,16 @@ public class Player {
     int availableReinforcements = 0;
     String name;
     boolean isHuman;
+    private Label reinforce_status;
     public Player(String name, boolean isHuman) {
         this.name = name;
         this.isHuman = isHuman;
     }
 
+    public void addLabel(Label label) {
+        this.reinforce_status = label;
+        label.relocate(800, 600);
+    }
     public String toString() {
         return name;
     }
@@ -44,4 +55,5 @@ public class Player {
         // TODO: check if all territories are owned by this player
         return false;
     }
+
 }

@@ -53,6 +53,8 @@ public class RiskGame extends Application {
         game.paintContinentBorders(colors);
 
         Button btn = new Button("Zug beenden");
+        Label reinforce_status = new Label("Available reinforcements: " + game.getHumanPlayers()[0].availableReinforcements);
+        game.getHumanPlayers()[0].addLabel(reinforce_status);
         btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -60,7 +62,7 @@ public class RiskGame extends Application {
             }
         });
         btn.relocate(600, 550);
-        g.getChildren().add(btn);
+        g.getChildren().addAll(btn, reinforce_status);
 
         scene.setRoot(g);
         stage.show();
