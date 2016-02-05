@@ -26,111 +26,14 @@ public class AllThoseTerritories {
     private boolean stepReinforcements = true;
     private boolean stepAttackAndMove = false;
     private boolean isPlayersTurn = true;
-    public int count_selected;
+    private Territory own;
+    private Territory enemy;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
         this.continents = readContinents(pathToMap);
         this.humanPlayers = humanPlayers;
         this.kiPlayers = kiPlayers;
-    }
-
-    //Is called when a territory is clicked.
-    public void territoryClicked(Territory territory) {
-        if (phaseOccupy) {
-            // Only call code if clicked territory is not owned by someone else
-            if (territory.owned_by == null) {
-                // Human selection
-                territory.setOwner(humanPlayers[0]);
-                territory.changeArmyStrength(1);
-                System.out.println(territory.name + " is now owned by " + territory.owned_by);
-
-                // KI selection
-                Territory randomTerritory =  getRandomUnoccupiedTerritory();
-                randomTerritory.setOwner(kiPlayers[0]);
-                randomTerritory.changeArmyStrength(1);
-                System.out.println(randomTerritory.name + " is now owned by " + randomTerritory.owned_by);
-
-                // if no territories are available any more, start conquer phase
-                if (allOccupied()) {
-                    phaseOccupy = false;
-                    phaseConqer = true;
-                    // TODO: Erste Verstärkungen ermitteln
-                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
-                    this.humanPlayers[0].updateLabel();
-                }
-            }
-        } else if (phaseConqer) {
-            // System.out.println("Start: Conquer");
-            if(stepReinforcements) {
-                if(this.humanPlayers[0].availableReinforcements == 0) {
-                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
-                }
-                else {
-                    this.humanPlayers[0].deployReinforcement(territory);
-                    if(this.humanPlayers[0].availableReinforcements == 0) {
-                        stepReinforcements = false;
-                        stepAttackAndMove = true;
-                    }
-                }
-            }
-            else if(stepAttackAndMove) {
-                System.out.println("Attack");
-                count_selected += territory.setSelected(humanPlayers[0], count_selected);
-                // attack(Territory own, Territory enemy);
-                // move(int armies, Territory source, Territory dest);
-
-            }
-            //TODO: Verstärkungen ermitteln und verteilen
-            /*if (this.humanPlayers[0].availableReinforcements > 0) {
-
-                if (territory.owned_by == humanPlayers[0]) {
-                    territory.changeArmyStrength(1);
-                    this.humanPlayers[0].availableReinforcements--;
-                }
-
-                if (this.humanPlayers[0].availableReinforcements == 1) {
-
-                }
-            } else { //TODO: Write code for Conquer phase
-                territory.setSelected(humanPlayers[0]);
-            }*/
-
-        }
-    }
-
-    public void attack(Territory own, Territory enemy) {
-        int attackers = Math.min(3, own.armyStrength - 1);
-        int defenders = Math.min(2, enemy.armyStrength);
-        int[] atk_dice = new int[attackers];
-        int[] def_dice = new int[defenders];
-
-        for (int i = 0; i < atk_dice.length; i++) {
-            atk_dice[i] = (int) (Math.random() * 6) + 1;
-        }
-
-        for (int i = 0; i < def_dice.length; i++) {
-            def_dice[i] = (int) (Math.random() * 6) + 1;
-        }
-
-        Arrays.sort(atk_dice);
-        Arrays.sort(def_dice);
-
-
-        if (atk_dice[attackers-1] > def_dice[defenders-1]) {
-            enemy.armyStrength--;
-        } else {
-            own.armyStrength--;
-        }
-
-        if (defenders == 2) {
-            if (atk_dice[attackers-2] > def_dice[defenders-2]) {
-                enemy.armyStrength--;
-            } else {
-                own.armyStrength--;
-            }
-        }
-
     }
 
     // Returns a Map containing all Territories. By doing this,
@@ -306,7 +209,86 @@ public class AllThoseTerritories {
         return territoryName;
     }
 
+    //Is called when a territory is clicked.
+    public void territoryClicked(Territory territory) {
+        if (phaseOccupy) {
+            // Only call code if clicked territory is not owned by someone else
+            if (territory.owned_by == null) {
+                // Human selection
+                territory.setOwner(humanPlayers[0]);
+                territory.changeArmyStrength(1);
+                System.out.println(territory.name + " is now owned by " + territory.owned_by);
 
+                // KI selection
+                Territory randomTerritory =  getRandomUnoccupiedTerritory();
+                randomTerritory.setOwner(kiPlayers[0]);
+                randomTerritory.changeArmyStrength(1);
+                System.out.println(randomTerritory.name + " is now owned by " + randomTerritory.owned_by);
+
+                // if no territories are available any more, start conquer phase
+                if (allOccupied()) {
+                    phaseOccupy = false;
+                    phaseConqer = true;
+                    // TODO: Erste Verstärkungen ermitteln
+                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
+                    this.humanPlayers[0].updateLabel();
+                }
+            }
+        } else if (phaseConqer) {
+            // System.out.println("Start: Conquer");
+            if(stepReinforcements) {
+                if(this.humanPlayers[0].availableReinforcements == 0) {
+                    this.humanPlayers[0].availableReinforcements = calc_reinforce(humanPlayers[0]);
+                }
+                else {
+                    this.humanPlayers[0].deployReinforcement(territory);
+                    if(this.humanPlayers[0].availableReinforcements == 0) {
+                        stepReinforcements = false;
+                        stepAttackAndMove = true;
+                    }
+                }
+            }
+            else if(stepAttackAndMove) {
+                System.out.println("Attack");
+                if (territory.owned_by == this.humanPlayers[0]) {
+                    if (own == null) {
+                        own = territory;
+                        own.setSelected(true);
+                    }
+                    else if (own != territory) {
+                        own.setSelected(false); // is old selected territory, deselect
+                        own = territory;
+                        own.setSelected(true);
+                    }
+                    else if (own == territory) {
+                        own.setSelected(false);
+                        own = null;
+                    }
+                }
+                else if (own != null && territory.owned_by == this.kiPlayers[0]) {
+                    enemy = territory;
+                    enemy.setSelected(true);
+                }
+                //attack(Territory own, Territory enemy);
+                //move(int armies, Territory source, Territory dest);
+            }
+            //TODO: Verstärkungen ermitteln und verteilen
+            /*if (this.humanPlayers[0].availableReinforcements > 0) {
+
+                if (territory.owned_by == humanPlayers[0]) {
+                    territory.changeArmyStrength(1);
+                    this.humanPlayers[0].availableReinforcements--;
+                }
+
+                if (this.humanPlayers[0].availableReinforcements == 1) {
+
+                }
+            } else { //TODO: Write code for Conquer phase
+                territory.setSelected(humanPlayers[0]);
+            }*/
+
+        }
+    }
 
     private int calc_reinforce(Player player) {
         int result = 0;

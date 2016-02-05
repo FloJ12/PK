@@ -16,7 +16,7 @@ import java.util.Map;
 public class Territory {
     public String name;
     public Player owned_by;
-    public int armyStrength;
+    private int armyStrength;
     private Map<String, Territory> neighbors = new HashMap();
     private List<Polygon> polygons = new ArrayList<>();
     private List<Polyline> polylines = new ArrayList<>();
@@ -67,38 +67,39 @@ public class Territory {
         owned_by = new_owner;
     }
 
-    public int setSelected(Player active_player, int count_selected) {
-        // this.isSelected = isSelected;
-        if( !this.isSelected ) {
-            if (count_selected < 2) {
+    public void setSelected(boolean selected) {
+        if(selected) {
                 this.isSelected = true;
-                if (owned_by == active_player) {
+                if (polygons.get(0).getFill() == Color.DODGERBLUE) {
                     for (Polygon p : polygons) {
                         p.setFill(Color.AQUA);
                     }
-                } else {
+                } else if (polygons.get(0).getFill() == Color.INDIANRED) {
                     for (Polygon p : polygons) {
                         p.setFill(Color.BROWN);
                     }
                 }
-                return 1;
-            } else {
-                return 0;
-            }
 
 
         } else {
             this.isSelected = false;
-            if (owned_by == active_player) {
+            if (polygons.get(0).getFill() == Color.AQUA) {
                 for (Polygon p : polygons) {
                     p.setFill(Color.DODGERBLUE);
                 }
-            } else {
+            } else if (polygons.get(0).getFill() == Color.BROWN) {
                 for (Polygon p : polygons) {
                     p.setFill(Color.INDIANRED);
                 }
             }
-            return -1;
+        }
+    }
+
+    public void toggleSelected() {
+        if (this.isSelected) {
+            setSelected(false);
+        } else {
+            setSelected(true);
         }
     }
 
