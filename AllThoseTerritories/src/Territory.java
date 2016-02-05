@@ -67,19 +67,25 @@ public class Territory {
         owned_by = new_owner;
     }
 
-    public void setSelected(Player active_player) {
+    public int setSelected(Player active_player, int count_selected) {
         // this.isSelected = isSelected;
         if( !this.isSelected ) {
-            this.isSelected = true;
-             if (owned_by == active_player) {
-                 for (Polygon p : polygons) {
-                     p.setFill(Color.AQUA);
-                 }
-             } else {
-                 for (Polygon p : polygons) {
-                     p.setFill(Color.BROWN);
-                 }
-             }
+            if (count_selected < 2) {
+                this.isSelected = true;
+                if (owned_by == active_player) {
+                    for (Polygon p : polygons) {
+                        p.setFill(Color.AQUA);
+                    }
+                } else {
+                    for (Polygon p : polygons) {
+                        p.setFill(Color.BROWN);
+                    }
+                }
+                return 1;
+            } else {
+                return 0;
+            }
+
 
         } else {
             this.isSelected = false;
@@ -92,7 +98,7 @@ public class Territory {
                     p.setFill(Color.INDIANRED);
                 }
             }
-
+            return -1;
         }
     }
 

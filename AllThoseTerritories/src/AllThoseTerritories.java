@@ -26,6 +26,7 @@ public class AllThoseTerritories {
     private boolean stepReinforcements = true;
     private boolean stepAttackAndMove = false;
     private boolean isPlayersTurn = true;
+    public int count_selected;
 
     public AllThoseTerritories(Player[] humanPlayers, Player[] kiPlayers, String pathToMap) {
         this.territories = readTerritories(pathToMap);
@@ -248,6 +249,7 @@ public class AllThoseTerritories {
             }
             else if(stepAttackAndMove) {
                 System.out.println("Attack");
+                count_selected += territory.setSelected(humanPlayers[0], count_selected);
             }
             //TODO: Verstärkungen ermitteln und verteilen
             /*if (this.humanPlayers[0].availableReinforcements > 0) {
